@@ -1,9 +1,787 @@
----
-layout: index
-section-type: index
-sitemap:
-  priority: 1.0
----
-<!--
-If you want to have a static message in your intro layout, disable the dynamic-typing in the _config.yml and write here your text
--->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Chris Kizziar — IT Operations Leader</title>
+<meta name="description" content="Chris Kizziar is an IT Operations leader based in Edmond, Oklahoma — scaling infrastructure and teams through cloud modernization, M&A integration, and digital transformation." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: oklch(0.975 0.008 80);
+    --bg-2: oklch(0.955 0.012 78);
+    --rule: oklch(0.86 0.012 80);
+    --ink: oklch(0.22 0.012 60);
+    --ink-2: oklch(0.42 0.012 60);
+    --ink-3: oklch(0.58 0.012 60);
+    --accent: oklch(0.55 0.13 42); /* muted terracotta */
+    --serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+    --sans: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  a { color: var(--ink); text-decoration: none; }
+  a.link {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1px;
+    transition: border-color .2s ease, color .2s ease;
+  }
+  a.link:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* ───── Top bar ───── */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 32px 0 0;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+  }
+  .topbar .mark { color: var(--ink); font-weight: 500; }
+  .topbar nav { display: flex; gap: 28px; }
+  .topbar nav a { color: var(--ink-2); transition: color .2s ease; }
+  .topbar nav a:hover { color: var(--accent); }
+
+  /* ───── Hero ───── */
+  .hero {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    align-items: end;
+    padding: 88px 0 96px;
+  }
+  .portrait {
+    aspect-ratio: 3 / 4;
+    background: var(--bg-2);
+    overflow: hidden;
+    position: relative;
+  }
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: saturate(0.92);
+  }
+  .portrait .tag {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: oklch(0.98 0 0);
+    background: oklch(0.22 0.012 60 / 0.6);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    padding: 6px 10px;
+  }
+
+  .lede .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .lede .eyebrow::before {
+    content: "";
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .lede h1 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(56px, 8.2vw, 124px);
+    line-height: 0.95;
+    letter-spacing: -0.015em;
+    margin: 0 0 28px;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .lede h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .lede .role {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.4vw, 30px);
+    line-height: 1.3;
+    color: var(--ink-2);
+    font-style: italic;
+    margin: 0 0 36px;
+    max-width: 36ch;
+    text-wrap: pretty;
+  }
+  .lede .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 12px 18px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: transparent;
+    transition: all .2s ease;
+    cursor: pointer;
+  }
+  .btn:hover { background: var(--ink); color: var(--bg); }
+  .btn.primary { background: var(--ink); color: var(--bg); }
+  .btn.primary:hover { background: var(--accent); border-color: var(--accent); }
+  .btn svg { width: 12px; height: 12px; }
+
+  /* ───── Section primitives ───── */
+  section { padding: 80px 0; border-top: 1px solid var(--rule); }
+  .section-head {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    margin-bottom: 56px;
+    align-items: baseline;
+  }
+  .section-head .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .section-head h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(36px, 4.6vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+  .section-head h2 em { font-style: italic; color: var(--accent); }
+
+  /* ───── About ───── */
+  .about-body {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+  }
+  .about-body .label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  .about-body p {
+    font-family: var(--serif);
+    font-size: clamp(20px, 1.7vw, 24px);
+    line-height: 1.45;
+    color: var(--ink);
+    margin: 0 0 20px;
+    max-width: 60ch;
+    text-wrap: pretty;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  /* ───── Stats ───── */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .stat {
+    padding: 36px 28px 36px 0;
+    border-right: 1px solid var(--rule);
+  }
+  .stat:last-child { border-right: none; padding-right: 0; }
+  .stat:not(:first-child) { padding-left: 28px; }
+  .stat .num {
+    font-family: var(--serif);
+    font-size: clamp(40px, 4.4vw, 60px);
+    line-height: 1;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .stat .num em { font-style: italic; color: var(--accent); }
+  .stat .desc {
+    font-family: var(--sans);
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.45;
+    max-width: 28ch;
+  }
+
+  /* ───── Skills ───── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .skill-cat {
+    padding: 28px 24px 28px 0;
+    border-bottom: 1px solid var(--rule);
+    border-right: 1px solid var(--rule);
+  }
+  .skill-cat:nth-child(3n) { border-right: none; padding-right: 0; }
+  .skill-cat:not(:nth-child(3n+1)) { padding-left: 24px; }
+  .skill-cat .num {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.06em;
+    margin-bottom: 14px;
+  }
+  .skill-cat h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  .skill-cat p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-2);
+    margin: 0;
+  }
+
+  /* ───── Experience ───── */
+  .role {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+  .role:last-child { border-bottom: none; }
+  .role .meta .when {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink-3);
+    margin-bottom: 12px;
+  }
+  .role .meta h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(26px, 2.6vw, 34px);
+    line-height: 1.15;
+    margin: 0 0 6px;
+    color: var(--ink);
+    letter-spacing: -0.005em;
+  }
+  .role .meta .company {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 20px;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .role .meta .place {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    letter-spacing: 0.04em;
+  }
+  .role .body ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .role .body li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 14px;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    text-wrap: pretty;
+  }
+  .role .body li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 12px;
+    height: 1px;
+    background: var(--accent);
+  }
+  .role .body li:last-child { margin-bottom: 0; }
+  .role .body .sub {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 24px 0 12px;
+  }
+  .role .body .sub:first-child { margin-top: 0; }
+
+  /* ───── Education ───── */
+  .edu {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    padding: 28px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .edu:last-child { border-bottom: none; }
+  .edu .when {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: var(--ink-3);
+  }
+  .edu h4 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 0 0 4px;
+    color: var(--ink);
+  }
+  .edu .school {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-2);
+  }
+
+  /* ───── Contact ───── */
+  .contact {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .contact h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(48px, 6.4vw, 88px);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .contact h2 em { font-style: italic; color: var(--accent); }
+  .contact .channels {
+    display: grid;
+    gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .contact .channels a,
+  .contact .channels .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-2);
+    transition: color .2s ease, padding .2s ease;
+  }
+  .contact .channels a:hover {
+    color: var(--accent);
+    padding-left: 8px;
+  }
+  .contact .channels .label-l {
+    color: var(--ink-3);
+  }
+  .contact .channels .value {
+    font-family: var(--serif);
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 22px;
+    color: var(--ink);
+    font-style: italic;
+  }
+  .contact .channels a:hover .value { color: var(--accent); }
+
+  /* ───── Footer ───── */
+  footer {
+    padding: 48px 0 56px;
+    border-top: 1px solid var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+  footer .arrow-up {
+    color: var(--ink-2);
+    transition: color .2s ease;
+  }
+  footer .arrow-up:hover { color: var(--accent); }
+
+  /* ───── Responsive ───── */
+  @media (max-width: 900px) {
+    .wrap { padding: 0 28px; }
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 56px 0 64px; }
+    .portrait { max-width: 360px; }
+    .section-head, .about-body, .role, .edu, .contact { grid-template-columns: 1fr; gap: 24px; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .stat { border-right: none; padding: 28px 0 !important; border-bottom: 1px solid var(--rule); }
+    .stat:nth-child(2n) { padding-left: 24px !important; border-left: 1px solid var(--rule); }
+    .stat:nth-child(odd) { padding-right: 24px !important; }
+    .skills-grid { grid-template-columns: 1fr; }
+    .skill-cat { border-right: none !important; padding: 24px 0 !important; }
+    section { padding: 56px 0; }
+    .topbar nav { gap: 18px; }
+  }
+
+  @media (max-width: 560px) {
+    .topbar { flex-direction: column; gap: 12px; align-items: flex-start; }
+    .stats { grid-template-columns: 1fr; }
+    .stat { border-left: none !important; padding: 24px 0 !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <span class="mark">Chris Kizziar</span>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" style="border-top: none; padding-top: 88px;">
+    <div class="portrait">
+      <img src="assets/chris-kizziar-retouched.jpg" alt="Portrait of Chris Kizziar" />
+      <span class="tag">Edmond, OK</span>
+    </div>
+    <div class="lede">
+      <div class="eyebrow">IT Operations Leader</div>
+      <h1>Chris<br/>Kizziar<em>.</em></h1>
+      <p class="role">Scaling infrastructure and teams through cloud modernization, M&amp;A integration, and digital transformation.</p>
+      <div class="actions">
+        <a class="btn primary" href="assets/Chris_Kizziar_Resume.pdf" download>
+          Download résumé
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v9m0 0L4.5 7.5M8 11l3.5-3.5M2.5 13.5h11"/></svg>
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/chriskizziar" target="_blank" rel="noopener">
+          LinkedIn
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5l5-5m0 0H6m4.5 0V8"/></svg>
+        </a>
+        <a class="btn" href="mailto:chris@chriskizziar.com">
+          Email
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 4h12v8H2zM2 4l6 5 6-5"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <div class="section-head">
+      <div class="label">01 — About</div>
+      <h2>Twenty years building <em>IT</em> for companies that won't sit still.</h2>
+    </div>
+    <div class="about-body">
+      <div class="label">Summary</div>
+      <div>
+        <p>Seasoned IT Operations leader experienced in scaling infrastructure and teams through rapid growth and acquisitions. Supported expansion from 109 to 1,500+ employees and growth of the IT organization from 5 to 51 professionals.</p>
+        <p>Delivered 8 major acquisition integrations, 4 ERP migrations, 80% cloud migration, two datacenter retirements, and ransomware recovery with zero data loss — all while managing a $4.9M IT budget.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section style="padding-top: 0; border-top: none;">
+    <div class="stats">
+      <div class="stat">
+        <div class="num">109<em>→</em>1,500<em>+</em></div>
+        <div class="desc">Company headcount supported through rapid growth</div>
+      </div>
+      <div class="stat">
+        <div class="num">5<em>→</em>51</div>
+        <div class="desc">IT organization scaled across two management layers</div>
+      </div>
+      <div class="stat">
+        <div class="num">8</div>
+        <div class="desc">Major acquisitions integrated, adding 51 new sites</div>
+      </div>
+      <div class="stat">
+        <div class="num">$4.9<em>M</em></div>
+        <div class="desc">IT budget managed; $230K saved annually</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section>
+    <div class="section-head">
+      <div class="label">02 — Practice</div>
+      <h2>What I <em>do</em>.</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-cat">
+        <div class="num">— 01</div>
+        <h4>IT Strategy &amp; Operations</h4>
+        <p>Aligning infrastructure roadmaps with business growth, executive priorities, and budget reality.</p>
+      </div>
+      <div class="skill-cat">
+        <div class="num">— 02</div>
+        <h4>Cloud Modernization</h4>
+        <p>Azure and AWS migrations, datacenter consolidation, secure cloud architecture at scale.</p>
+      </div>
+      <div class="skill-cat">
+        <div class="num">— 03</div>
+        <h4>M&amp;A Integration</h4>
+        <p>Post-merger consolidation, ERP migrations, and absorbing acquired teams without disruption.</p>
+      </div>
+      <div class="skill-cat">
+        <div class="num">— 04</div>
+        <h4>Cybersecurity &amp; Recovery</h4>
+        <p>Incident response, ransomware recovery, IAM, penetration testing, and SecOps posture.</p>
+      </div>
+      <div class="skill-cat">
+        <div class="num">— 05</div>
+        <h4>Team Leadership</h4>
+        <p>Building and growing high-performing engineering and operations teams across two management layers.</p>
+      </div>
+      <div class="skill-cat">
+        <div class="num">— 06</div>
+        <h4>Digital Transformation</h4>
+        <p>Process automation, DevOps practices, and stakeholder alignment from operator to executive.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <div class="section-head">
+      <div class="label">03 — Experience</div>
+      <h2>Selected <em>work</em>.</h2>
+    </div>
+
+    <div class="role">
+      <div class="meta">
+        <div class="when">Dec 2019 — Present</div>
+        <h3>IT Operations Manager</h3>
+        <div class="company">Crescent Energy</div>
+        <div class="place">Oklahoma City, OK</div>
+      </div>
+      <div class="body">
+        <ul>
+          <li>Played a key role in scaling IT operations during rapid company growth, supporting expansion from 109 to 1,500+ employees while the IT organization grew from 5 to 51 professionals across a 60-location footprint.</li>
+          <li>Built and led high-performing infrastructure, engineering, and operations teams of up to 11 members across two management layers, driving talent development and adoption of modern IT practices.</li>
+          <li>Directed integration of 8 major acquisitions (adding 1,100 employees and 51 new sites), delivered 4 ERP migrations, retired 2 datacenters, and migrated ~80% of systems to the cloud (Azure and AWS).</li>
+          <li>Led ransomware recovery with zero data loss in four weeks; strengthened cybersecurity, optimized cloud and datacenters, saving $230,000 annually within a $4.9M IT budget.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="meta">
+        <div class="when">Nov 2014 — Dec 2019</div>
+        <h3>Senior SecOps Architect<br/>Senior DevOps Engineer</h3>
+        <div class="company">Symphony Talent</div>
+        <div class="place">Edmond, OK</div>
+      </div>
+      <div class="body">
+        <div class="sub">Senior SecOps Architect / Information Security Analyst — May 2018&nbsp;–&nbsp;Dec 2019</div>
+        <ul>
+          <li>Architected and deployed enterprise cloud security solutions across 15+ AWS accounts and multiple global regions, reducing attack surface and strengthening overall SecOps posture.</li>
+          <li>Automated traffic monitoring, security analytics, and blocking processes across ~20 publicly accessible solution stacks, improving threat detection and minimizing exposure.</li>
+          <li>Managed identity and access management (IAM) controls for AWS accounts, internal networks, and business applications, enforcing least-privilege policies.</li>
+          <li>Conducted penetration testing and vulnerability assessments across multiple platforms; prioritized and remediated findings to reduce critical and high-risk vulnerabilities.</li>
+        </ul>
+        <div class="sub">Senior DevOps / Windows Engineer</div>
+        <ul>
+          <li>Provided technical leadership for Windows engineering and infrastructure modernization, developing roadmaps for datacenter virtualization, consolidation, and cloud transformation in AWS and Azure.</li>
+          <li>Designed and automated secure cloud architectures, integrating Active Directory, Group Policy, DNS, and account provisioning to support scalable DevOps and SecOps environments.</li>
+          <li>Managed, optimized, and secured 500+ Microsoft SQL Server databases (including multi-terabyte instances), strengthening backup/recovery and database security practices.</li>
+          <li>Implemented monitoring and collaboration platforms improving infrastructure visibility and reducing incident response times.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="meta">
+        <div class="when">Feb 2013 — Nov 2014</div>
+        <h3>Windows Server &amp; SQL Engineer</h3>
+        <div class="company">Computer Services, Inc.</div>
+        <div class="place">Oklahoma City, OK</div>
+      </div>
+      <div class="body">
+        <ul>
+          <li>Administered enterprise Windows Server and SQL Server environments, troubleshooting complex issues to increase system uptime and stabilize critical business services.</li>
+          <li>Executed system upgrades, security patches, and performance monitoring while optimizing alerts, reducing incident response times by 30%.</li>
+          <li>Engineered and supported client-server infrastructure using Microsoft technologies, Active Directory, VMware, and SQL Server for over 100 business-critical applications.</li>
+          <li>Developed and maintained standard operating procedures for virtualization, systems administration, and SQL database management, improving process consistency by 25%.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="meta">
+        <div class="when">Apr 2011 — Feb 2013</div>
+        <h3>Sr. Database Administrator<br/>Systems Engineer</h3>
+        <div class="company">Quality Support Services</div>
+        <div class="place">Tinker AFB, OK</div>
+      </div>
+      <div class="body">
+        <ul>
+          <li>Directed administration of multi-platform DBMS environments, implementing standardized processes that improved operational efficiency and strengthened information security controls.</li>
+          <li>Engineered high-availability clustered databases in a fully virtualized environment and optimized data models and indexes for mission-critical applications.</li>
+          <li>Designed and managed backup, recovery, and disaster recovery strategies, including secure off-site tape storage, reducing data loss risk and improving business continuity.</li>
+          <li>Collaborated with acquisition and IT leadership to evaluate software solutions, develop RFPs, and establish EDM/ECM database procedures.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="meta">
+        <div class="when">Dec 2008 — Apr 2011</div>
+        <h3>Database Administrator</h3>
+        <div class="company">Lockheed Martin / BAE Systems</div>
+        <div class="place">Ft. Stewart, GA</div>
+      </div>
+      <div class="body">
+        <ul>
+          <li>Designed and implemented data automation tools that improved asset visibility and equipment accountability across the 3rd Infantry Division.</li>
+          <li>Integrated multiple military databases and disparate data formats to achieve 100% data accuracy and ensure Army force readiness compliance.</li>
+          <li>Served as Information Management Officer (IMO) and Information Assurance Security Officer (IASO); developed a database system delivering over $418 million in internal cost savings.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="role">
+      <div class="meta">
+        <div class="when">Nov 2006 — Dec 2008</div>
+        <h3>GIS Analyst<br/>IT Services Specialist</h3>
+        <div class="company">Glynn County Board of Commissioners</div>
+        <div class="place">Brunswick, GA</div>
+      </div>
+      <div class="body">
+        <ul>
+          <li>Designed and implemented geographic data management systems using Oracle databases to support county-wide GIS operations and emergency management planning.</li>
+          <li>Performed Oracle database maintenance, upgrades, and optimization while recommending GIS software and hardware enhancements across departments.</li>
+          <li>Managed full IT hardware lifecycle, authored documentation and user manuals, and managed electronic voting systems testing, security audits, and regulatory compliance.</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Education -->
+  <section>
+    <div class="section-head">
+      <div class="label">04 — Education</div>
+      <h2>Continuing <em>study</em>.</h2>
+    </div>
+    <div class="edu">
+      <div class="when">Jan 2024 — Jun 2026</div>
+      <div>
+        <h4>Master of Science, Information Technology Management</h4>
+        <div class="school">Western Governors University · Salt Lake City, UT</div>
+      </div>
+    </div>
+    <div class="edu">
+      <div class="when">Jun 2014 — Jun 2018</div>
+      <div>
+        <h4>Bachelor's Degree, Information Technology Security</h4>
+        <div class="school">Western Governors University · Salt Lake City, UT</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <div class="contact">
+      <h2>Let's <em>talk</em>.</h2>
+      <div class="channels">
+        <a href="mailto:chris@chriskizziar.com">
+          <span class="label-l">Email</span>
+          <span class="value">chris@chriskizziar.com</span>
+        </a>
+        <a href="tel:+14052269908">
+          <span class="label-l">Phone</span>
+          <span class="value">405.226.9908</span>
+        </a>
+        <a href="https://www.linkedin.com/in/chriskizziar" target="_blank" rel="noopener">
+          <span class="label-l">LinkedIn</span>
+          <span class="value">in/chriskizziar</span>
+        </a>
+        <a href="assets/Chris_Kizziar_Resume.pdf" download>
+          <span class="label-l">Résumé</span>
+          <span class="value">Download PDF</span>
+        </a>
+        <div class="row">
+          <span class="label-l">Based</span>
+          <span class="value">Edmond, Oklahoma</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <span>© 2026 Chris Kizziar</span>
+    <a href="#" class="arrow-up">Back to top ↑</a>
+  </footer>
+
+</div>
+
+</body>
+</html>
